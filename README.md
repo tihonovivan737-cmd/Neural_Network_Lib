@@ -1,20 +1,20 @@
 # Neural Network Lib
 
-GPU-accelerated deep learning library on top of `CuPy`. The project includes basic building blocks for fully connected, convolutional, and recurrent neural networks, plus a simple BPE tokenizer and model serialization to `HDF5`.
+Библиотека глубокого обучения на базе `CuPy` с GPU-ускорением. Проект включает базовые компоненты для полносвязных, сверточных и рекуррентных нейронных сетей, а также простой BPE-токенизатор и сохранение моделей в формате `HDF5`.
 
-## Features
+## Возможности
 
-- Dense neural networks with configurable activations
-- Convolutional layers: `Conv2D`, `BatchNorm2D`, `MaxPooling2D`, `AveragePooling2D`
-- Recurrent layers: `RNN`, `LSTM`, `GRU`, `minLSTM`, `minGRU`
-- Utility layers: `Flatten`, `Reshape`, `Embedding`, `LastState`
-- Activations: `ReLU`, `LeakyReLU`, `SReLU`, `SiLU`, `Sigmoid`, `Tanh`, `Softmax`
-- Loss functions: `MeanSquaredError`, `CrossEntropyLoss`, `HingeLoss`
-- Optimizers supported by layers: `SGD`, `AdaGrad`, `RMSProp`, `Adam`, `AdaDelta`
-- BPE tokenizer training, saving, loading, encoding, and decoding
-- Model save/load helpers in `HDF5`
+- Полносвязные нейронные сети с настраиваемыми функциями активации
+- Сверточные слои: `Conv2D`, `BatchNorm2D`, `MaxPooling2D`, `AveragePooling2D`
+- Рекуррентные слои: `RNN`, `LSTM`, `GRU`, `minLSTM`, `minGRU`
+- Вспомогательные слои: `Flatten`, `Reshape`, `Embedding`, `LastState`
+- Функции активации: `ReLU`, `LeakyReLU`, `SReLU`, `SiLU`, `Sigmoid`, `Tanh`, `Softmax`
+- Функции потерь: `MeanSquaredError`, `CrossEntropyLoss`, `HingeLoss`
+- Поддерживаемые оптимизаторы: `SGD`, `AdaGrad`, `RMSProp`, `Adam`, `AdaDelta`
+- Обучение BPE-токенизатора, сохранение, загрузка, кодирование и декодирование
+- Сохранение и загрузка моделей через `HDF5`
 
-## Project Structure
+## Структура Проекта
 
 ```text
 .
@@ -30,45 +30,45 @@ GPU-accelerated deep learning library on top of `CuPy`. The project includes bas
 |-- __init__.py
 ```
 
-## Requirements
+## Требования
 
 - Python 3.10+
-- NVIDIA GPU and CUDA-compatible `CuPy` build for GPU execution
-- Python packages from `requirements.txt`
+- NVIDIA GPU и совместимая с вашей CUDA сборка `CuPy`
+- Python-зависимости из `requirements.txt`
 
-Install base dependencies:
+Установка базовых зависимостей:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Then install the correct `CuPy` package for your CUDA version, for example:
+Дальше нужно установить подходящий пакет `CuPy` под вашу версию CUDA, например:
 
 ```bash
 pip install cupy-cuda12x
 ```
 
-If you use another CUDA version, replace the package accordingly.
+Если у вас другая версия CUDA, замените пакет на соответствующий.
 
-## Installation
+## Установка
 
-Clone the repository:
+Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/<your-username>/Neural_Network_Lib.git
+git clone https://github.com/tihonovivan737-cmd/Neural_Network_Lib.git
 cd Neural_Network_Lib
 ```
 
-Install dependencies:
+Установите зависимости:
 
 ```bash
 pip install -r requirements.txt
 pip install cupy-cuda12x
 ```
 
-## Quick Start
+## Быстрый Старт
 
-Example of a simple fully connected classifier:
+Пример простого полносвязного классификатора:
 
 ```python
 import cupy as cp
@@ -94,14 +94,14 @@ print("accuracy:", accuracy)
 print("loss:", epoch_loss)
 ```
 
-## Data Format Expectations
+## Формат Данных
 
-- Dense layers expect tensors shaped like `(batch_size, features)`
-- Convolution layers expect `(batch_size, height, width, channels)`
-- Recurrent layers expect `(batch_size, sequence_length, features)`
-- Classification training helpers assume one-hot encoded targets
+- Полносвязные слои ожидают тензоры формы `(batch_size, features)`
+- Сверточные слои ожидают `(batch_size, height, width, channels)`
+- Рекуррентные слои ожидают `(batch_size, sequence_length, features)`
+- Вспомогательные функции обучения для классификации предполагают one-hot разметку таргетов
 
-## Model Saving
+## Сохранение Модели
 
 ```python
 from network_save_and_load import save_model, load_model
@@ -110,7 +110,7 @@ save_model(model, "model.h5")
 restored_model = load_model("model.h5")
 ```
 
-## Tokenizer Example
+## Пример С Токенизатором
 
 ```python
 from tokenizer import train_bpe, load_tokenizer, encode, decode
@@ -126,12 +126,12 @@ token_ids = encode("Neural networks", merge_rules, encoder)
 text = decode(token_ids, decoder)
 ```
 
-## Notes
+## Примечания
 
-- The library is focused on educational and experimental use.
-- The codebase currently provides core modules, but does not yet include a packaged release, benchmark suite, or automated tests.
-- `CuPy` installation depends on your local CUDA setup, so it is intentionally documented separately from the base requirements.
+- Библиотека больше ориентирована на обучение, эксперименты и личные проекты.
+- В проекте есть основные модули, но пока нет оформленного пакетного релиза, набора бенчмарков и автоматических тестов.
+- `CuPy` ставится отдельно, потому что выбор пакета зависит от вашей локальной версии CUDA.
 
-## License
+## Лицензия
 
-Add your preferred license before publishing the project publicly.
+Перед публичной публикацией проекта стоит добавить выбранную лицензию, например `MIT`.

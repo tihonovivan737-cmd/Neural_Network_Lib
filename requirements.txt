@@ -1,0 +1,5 @@
+# Install a CuPy build matching your CUDA version separately, for example:
+# pip install cupy-cuda12x
+
+h5py>=3.10
+regex>=2024.0.0
